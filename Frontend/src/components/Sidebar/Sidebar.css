@@ -1,12 +1,13 @@
 .sidebar {
   position: fixed;
-  top: 60px;
-  left: -220px;
-  width: 220px;
+  top: 70px;
+  left: -240px;
+  width: 240px;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: #111;
   transition: 0.4s ease;
   padding-top: 30px;
+  box-shadow: 5px 0 20px rgba(0, 0, 0, 0.6);
 }
 
 .sidebar.open {
@@ -19,15 +20,23 @@
 }
 
 .sidebar li {
-  padding: 15px 25px;
+  padding: 16px 30px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  font-size: 16px;
+  color: #ccc;
 }
 
 .sidebar li:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #1f1f1f;
+  color: #00bfff;
+  padding-left: 40px;
 }
 
 .logout {
   color: #ff4d4d;
+}
+
+.logout:hover {
+  background: rgba(255, 0, 0, 0.1);
 }
