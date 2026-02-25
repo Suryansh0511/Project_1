@@ -1,0 +1,213 @@
+/* 🌄 Full Page Background with Image */
+.Container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: url("../Assets/bg.jpg") no-repeat center center/cover;
+
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+/* Dark Overlay */
+.Container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* 🪟 Glass Card */
+.card {
+  width: 420px;
+  padding: 50px 55px;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  z-index: 2;
+}
+
+/* Header */
+.Header {
+  text-align: center;
+}
+
+.text {
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.underline {
+  width: 65px;
+  height: 4px;
+  background: white;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+
+/* Inputs */
+.inputs {
+  margin-top: 35px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  transition: 0.5s ease;
+}
+
+.input img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+}
+
+.input input {
+  flex: 1;
+  margin-left: 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: white;
+}
+
+.input input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ✅ Toggle Button Container */
+.submit-container {
+  margin-top: 35px;
+  width: 100%;
+  display: flex;
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+/* ✅ Sliding Blue Highlight */
+.submit-container::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+
+  background: rgba(76, 125, 255, 0.75);
+  border-radius: 50px;
+
+  transition: 0.6s ease;
+}
+
+/* ✅ BUTTON ORDER: Sign Up (LEFT) | Login (RIGHT) */
+
+/* Signup Selected → Blue on LEFT */
+.card.signup .submit-container::before {
+  left: 0%;
+}
+
+/* Login Selected → Blue on RIGHT */
+.card.login .submit-container::before {
+  left: 50%;
+}
+
+/* Toggle Buttons */
+.submit {
+  flex: 1;
+  height: 50px;
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+
+  cursor: pointer;
+  z-index: 2;
+  transition: 0.3s ease;
+}
+
+.submit:hover {
+  transform: scale(1.05);
+}
+
+/* Active Text Bright */
+.submit.active {
+  font-weight: 700;
+  opacity: 1;
+}
+
+/* Inactive Button */
+.gray {
+  opacity: 0.6;
+}
+
+/* ✅ Main Submit Button */
+.main-submit {
+  width: 100%;
+  margin-top: 28px;
+  padding: 14px;
+  border-radius: 14px;
+
+  border: none;
+  cursor: pointer;
+
+  background: #4c7dff;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.main-submit:hover {
+  background: #2f5ee0;
+  transform: scale(1.04);
+}
+
+/* ✅ Sliding Name Field */
+
+/* Hide Name in Login */
+.card.login .name-field {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  transform: translateY(-15px);
+}
+
+/* Show Name in Signup */
+.card.signup .name-field {
+  max-height: 70px;
+  opacity: 1;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+  transform: translateY(0);
+}

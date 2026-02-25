@@ -1,0 +1,27 @@
+.dashboard {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #1a2a6c, #b21f1f, #fdbb2d);
+  color: white;
+}
+
+.topbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.menu-btn {
+  font-size: 26px;
+  margin-right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.content {
+  padding: 40px;
+}
