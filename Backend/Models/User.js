@@ -6,16 +6,27 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-
   email: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
   },
-
   password: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  // ✅ New fields
+  age: {
+    type: DataTypes.INTEGER,
+  },
+  mobile: {
+    type: DataTypes.STRING,
+  },
+  gender: {
+    type: DataTypes.STRING,
+  },
+  dob: {
+    type: DataTypes.DATEONLY,
   },
 });
 

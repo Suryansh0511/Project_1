@@ -1,23 +1,50 @@
+// ================= IMPORT PACKAGES =================
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+// ================= DATABASE =================
 const sequelize = require("./config/db");
-const authRoutes = require("./routes/Auth");
 
+// ================= ROUTES =================
+const authRoutes = require("./routes/Auth");
+const uploadRoutes = require("./routes/upload");
+const profileRoutes = require("./routes/profile");
+
+// ================= CREATE EXPRESS APP =================
 const app = express();
 
+// ================= MIDDLEWARE =================
 app.use(cors());
 app.use(express.json());
 
+// ================= STATIC FOLDER FOR FILES =================
+app.use("/uploads", express.static("uploads"));
+
+// ================= ROUTES =================
 app.use("/api/auth", authRoutes);
+app.use("/api/upload", uploadRoutes);
+app.use("/api", profileRoutes);
 
-// Connect to PostgreSQL
-sequelize
-  .sync()
-  .then(() => console.log("PostgreSQL Connected ✅"))
-  .catch((err) => console.log("DB Error ❌", err));
+// ================= TEST DATABASE CONNECTION =================
+async function connectDB() {
+  try {
+    await sequelize.authenticate();
+    console.log("PostgreSQL Connected ✅");
 
-app.listen(5000, () =>
-  console.log("Backend running at http://localhost:5000 🚀")
-);
+    // Create tables automatically
+    await sequelize.sync({ alter: true });
+
+  } catch (error) {
+    console.error("DB Connection Error ❌", error);
+  }
+}
+
+connectDB();
+
+// ================= START SERVER =================
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Backend running at http://localhost:${PORT} 🚀`);
+});

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const User = require("../models/User");
-
+const authMiddleware = require("../middleware/authmiddleware");
 const router = express.Router();
 
 /* SIGNUP */
@@ -54,5 +54,14 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+router.get("/me", authMiddleware, async (req, res) => {
+  const user = await User.findByPk(req.user.id, {
+    attributes: ["id","username","email"]
+  });
+
+  res.json(user);
+});
+
 
 module.exports = router;
